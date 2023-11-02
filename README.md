@@ -1,12 +1,10 @@
-# Deep image prior to reconstruct EIT images from limited data
+# Deep image prior with total variation regularization to reconstruct EIT images from limited data
 
 ## Brief description of our algorithm in the context of Kuopio Tomography Challenge 2023 (KTC2023) [[1]](#1), [[2]](#2)
 
-Our algorithm is based on the Deep Image Prior (DIP) [[3]](#3).
-
-
-* Input: blurred images from the dataset (training set)
-* Output: resulting images from the DIP network (only)
+Our algorithm is based on the Deep Image Prior (DIP) [[3]](#3) with Total Variation (TV) regularization.
+* Input: Voltage measurements (Full or limited data)
+* Output: Reconstructed conductivities, interpolated to a regular grid and segmented
 
 The deep generator network is a parametric function <img src="https://render.githubusercontent.com/render/math?math=f_{\theta}(z)"> 
 where the generator weights θ are randomly initialized and z is a random vector.  
@@ -34,7 +32,7 @@ This is our second submission to the KTC2023.
 
 ²Federal University of ABC - [UFABC](https://www.ufabc.edu.br/) - Campus São Bernardo - Alameda da Universidade, s/nº - Bairro Anchieta, São Bernardo do Campo - CEP: 09606-405 (Brazil)
 
-## Proposed method installation, usage instructions and examples
+## Proposed method installation
 
 ### Method installation and requirements
 * The Python codes are available in this repository, see main.py and the /utils folder.
@@ -42,7 +40,7 @@ This is our second submission to the KTC2023.
   
      git clone https://github.com/robert-abc/KTC2023-ABC
 
-     cd HDC-DIP
+     cd KTC2023-ABC
 
 ### Prerequisites
 * In the following table, there is a small list of the main packages we used (with "import").
@@ -58,9 +56,18 @@ This is our second submission to the KTC2023.
 | Torch | 2.0.0+cu118 | 
 | ODL | 1.0.0 | 
 
-     
+We also used the total variation loss of the torchmetrics package:
+https://torchmetrics.readthedocs.io/en/stable/image/total_variation.html
 
-### Usage instructions and example: Running with a callable function from the command line
+### External codes
+
+* To make our code compatible with PyTorch, ............
+* We also need to mention that we adapted functions from the original DIP article [[4]](#4). Available at https://github.com/DmitryUlyanov/deep-image-prior/, under Apache License 2.0. The particular requisites are shown here: https://github.com/DmitryUlyanov/deep-image-prior/blob/master/README.md
+
+Although these toolboxes have their own requisites, Subsection 3.1 describes the ones we need. 
+
+
+## Usage instructions and example: Running with a callable function from the command line
 
 By the rules of the KTC2023, it was expected a main routine with three arguments: 
 * *Your main routine must require three input arguments:*
@@ -74,12 +81,7 @@ After the setup, it is possible to run our code following these rules. Consideri
 
 See, for instance, the Section "Generating results" from the example notebook [Here](/notebook_example.ipynb).
 
-### External codes
 
-* To make our code compatible with PyTorch, it was mostly based on ODL (https://github.com/odlgroup/odl), under Mozilla Public License, version 2.0.
-* We also need to mention that we adapted functions from the original DIP article [[4]](#4). Available at https://github.com/DmitryUlyanov/deep-image-prior/, under Apache License 2.0. The particular requisites are shown here: https://github.com/DmitryUlyanov/deep-image-prior/blob/master/README.md
-
-Although these toolboxes have their own requisites, Subsection 3.1 describes the ones we need. 
 
 ## References
 
