@@ -66,9 +66,6 @@ https://torchmetrics.readthedocs.io/en/stable/image/total_variation.html
 * To make our code compatible with PyTorch, ............
 * We also need to mention that we adapted functions from the original DIP article [[4]](#4). Available at https://github.com/DmitryUlyanov/deep-image-prior/, under Apache License 2.0. The particular requisites are shown here: https://github.com/DmitryUlyanov/deep-image-prior/blob/master/README.md
 
-Although these toolboxes have their own requisites, Subsection 3.1 describes the ones we need. 
-
-
 ## Usage instructions and example: Running with a callable function from the command line
 
 By the rules of the KTC2023, it was expected a main routine with three arguments: 
