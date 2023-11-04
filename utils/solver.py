@@ -4,10 +4,10 @@ import torch
 import torch.nn.functional as F
 from torchmetrics.image import TotalVariation
 from PIL import Image
-import KTCMeshing
-import KTCFwd
-import KTCScoring
-import DIPAux
+from utils import KTCMeshing
+from utils import KTCFwd
+from utils import KTCScoring
+from utils import DIPAux
 
 # Use of GPU
 if torch.cuda.is_available():
@@ -106,7 +106,7 @@ def solve(inputData, categoryNbr):
 def get_solver_matrices(inputData, categoryNbr, lin_point=1):
     Nel = 32  # number of electrodes
     z = (1e-6) * np.ones((Nel, 1))  # contact impedances
-    mat_dict = sp.io.loadmat('reference_files/ref.mat') #load the reference data
+    mat_dict = sp.io.loadmat('utils/reference_files/ref.mat') #load the reference data
     Injref = mat_dict["Injref"] #current injections
     Uelref = mat_dict["Uelref"] #measured voltages from water chamber
     Mpat = mat_dict["Mpat"] #voltage measurement pattern
@@ -121,7 +121,7 @@ def get_solver_matrices(inputData, categoryNbr, lin_point=1):
             vincl[jj,:] = 0
 
     # load premade finite element mesh (made using Gmsh, exported to Matlab and saved into a .mat file)
-    mat_dict_mesh = sp.io.loadmat('reference_files/Mesh_sparse.mat')
+    mat_dict_mesh = sp.io.loadmat('utils/reference_files/Mesh_sparse.mat')
     g = mat_dict_mesh['g'] #node coordinates
     H = mat_dict_mesh['H'] #indices of nodes making up the triangular elements
     elfaces = mat_dict_mesh['elfaces'][0].tolist() #indices of nodes making up the boundary electrodes
