@@ -282,7 +282,7 @@ def segment(cond_pixels_np):
             cond_pixels_np_segmented[ind0] = 1
             cond_pixels_np_segmented[ind1] = 1
 
-    opening_mask = sp.ndimage.binary_opening(cond_pixels_np_segmented, iteratios=10)
+    opening_mask = sp.ndimage.binary_opening(cond_pixels_np_segmented, iterations=10)
     cond_pixels_np_segmented = opening_mask * cond_pixels_np_segmented
   
     return cond_pixels_np_segmented
