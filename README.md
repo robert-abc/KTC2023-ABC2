@@ -50,20 +50,16 @@ Then, $\Delta \sigma$ is interpolated to a regular 256 x 256 grid and segmented 
 | Package | Version |
 | ------------- | ------------- |
 | Python | 3.10.11 | 
-| Numpy | 1.22.4 | 
+| Numpy | 1.23.5 | 
 | Matplotlib | 3.7.1 | 
-| Scipy | 1.10.1 | 
-| Skimage | 0.19.3 |
-| Pillow | 8.4.0 | 
-| Torch | 2.0.0+cu118 | 
-| ODL | 1.0.0 | 
-
-We also used the total variation loss of the torchmetrics package:
-https://torchmetrics.readthedocs.io/en/stable/image/total_variation.html
+| Scipy | 1.11.3 | 
+| Pillow | 9.4.0 | 
+| Torch | 2.1.0+cu118 | 
+| Torchmetrics | 1.2.0 | 
 
 ### External codes
 
-* To make our code compatible with PyTorch, ............
+* We used part of the codes provided in the challenge to implement the EIT forward model.
 * We also need to mention that we adapted functions from the original DIP article [[4]](#4). Available at https://github.com/DmitryUlyanov/deep-image-prior/, under Apache License 2.0. The particular requisites are shown here: https://github.com/DmitryUlyanov/deep-image-prior/blob/master/README.md
 
 ## Usage instructions and example: Running with a callable function from the command line
@@ -76,11 +72,9 @@ By the rules of the KTC2023, it was expected a main routine with three arguments
 * *Python: The main function must be a callable function from the command line. 
 
 After the setup, it is possible to run our code following these rules. Considering the difficulty group 7: 
-* python main.py 'example/input' 'example/output' 7
+* python main.py 'input' 'example/output' 7
 
 See, for instance, the Section "Generating results" from the example notebook [Here](/notebook_example.ipynb).
-
-
 
 ## References
 
